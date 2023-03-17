@@ -224,10 +224,26 @@ public class Main {
         System.out.println("Saisissez un nombre :");
         int nombre = demandeInt();
         String message = "";
-        String etoile = "*";
+        String tabMessage[] = new String[nombre]; // tableau pour stocker les étoiles
         for (int i = 1; i <= nombre; i++) {
-            message += "*";
-            System.out.println(message);
+            if (i==1){
+                message += "*";
+            } else {
+                message += "**";
+            }
+            tabMessage[i-1] = message;
+        }
+
+        // ajoute les espaces
+
+        // reste boucle qui ajoute a mesure les espaces devant
+        String espace = " ";
+        for (int i = nombre-2; i > 0 ; i--) {
+            tabMessage[i] = " " + tabMessage[i]i;
+        }
+
+        for (String valeur:tabMessage) {
+            System.out.println(valeur);
         }
     }
 
