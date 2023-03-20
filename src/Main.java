@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +14,8 @@ public class Main {
         // exo8();
         // exo9();
         // exo10();
-        exo11();
+        // exo11();
+        exo12();
     }
 
     /* demande a l'utilisateur et renvoi un string */
@@ -283,7 +286,33 @@ public class Main {
                 }
             }
         }
+    }
 
+    /* Temperature
+       Vous disposez d'une liste de températures (°C).
+       Parcourez cette liste et affichez la température la plus proche de 0°C.
+       Si une température négative est aussi proche de 0 qu'une température positive, la valeur négative
+       prend le dessus.
+     */
+    public static void exo12(){
+        List<Double> temperatures = new ArrayList<>();
+        temperatures.add(12.0);
+        temperatures.add(25.0);
+        temperatures.add(5.0);
+        temperatures.add(7.0);
+        temperatures.add(6.0);
+        temperatures.add(-5.0);
+        double proche = 0;
+        double basseTemp = 500000;
+
+        for (int i = 0; i < temperatures.size(); i++) {
+            if(temperatures.get(i) < 5000){
+                basseTemp = temperatures.get(i);
+            } else {
+
+            }
+        }
+        System.out.println("La temperateure la plus proche de 0°C est " + basseTemp + "°C.");
     }
 
 }
