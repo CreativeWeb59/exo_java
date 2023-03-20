@@ -11,7 +11,8 @@ public class Main {
         // exo7();
         // exo8();
         // exo9();
-        exo10();
+        // exo10();
+        exo11();
     }
 
     /* demande a l'utilisateur et renvoi un string */
@@ -224,6 +225,8 @@ public class Main {
         System.out.println("Saisissez un nombre :");
         int nombre = demandeInt();
         String message = "";
+        String etoile = "";
+
         String tabMessage[] = new String[nombre]; // tableau pour stocker les étoiles
         for (int i = 1; i <= nombre; i++) {
             if (i==1){
@@ -233,18 +236,27 @@ public class Main {
             }
             tabMessage[i-1] = message;
         }
-
-        // ajoute les espaces
-
         // reste boucle qui ajoute a mesure les espaces devant
+        // rempli tableau avec les etoiles et les espaces
         String espace = " ";
-        for (int i = nombre-2; i > 0 ; i--) {
-            tabMessage[i] = " " + tabMessage[i]i;
+        String texteAjout = "";
+        for (int i = nombre-2; i >= 0 ; i--) {
+            texteAjout += espace;
+            tabMessage[i] = texteAjout + tabMessage[i];
         }
 
         for (String valeur:tabMessage) {
             System.out.println(valeur);
         }
+    }
+
+    /* exo 11 La monnaie europeenne
+    Écrivez un programme qui demande à l'utilisateur de saisir un nombre décimal.
+    Le programme doit renvoyer exactement le nombre de billets et de pièces qu'il faut pour obtenir ce nombre
+     */
+
+    public static void exo11(){
+
     }
 
 }
