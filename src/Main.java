@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +17,10 @@ public class Main {
         // exo10();
         // exo11();
         // exo12();
-        exo13();
+        // exo13();
+        // fizzBuzz();
+        // plusOuMoins();
+        rollerCoster();
     }
 
     /* demande a l'utilisateur et renvoi un string */
@@ -36,6 +40,29 @@ public class Main {
         return scanner.nextDouble();
     }
 
+    /*
+    renvoi un nombre random
+     */
+    public static int randInt(int maximum){
+        return new Random().nextInt(maximum);
+    }
+    /*
+    renvoi un nombre random entre 2 bornes
+     */
+    public static int randInt(int min, int max){
+        return new Random().nextInt(min, max);
+    }
+
+    /**
+     * Vérifie si la chaine qu'on met en paramètre contient un entier
+     * @param laChaine
+     * @return
+     */
+    public static boolean verifSiContientEntier(String laChaine){
+        return laChaine != null && laChaine.matches("[0-9]+");
+        // if (laChaine.contains("0")){ return true;}
+
+    }
 
     /* Ecrire un programme qui demande à l'utilisateur de saisir son nom et de lui afficher son nom avec le
         message de bienvenue.
@@ -354,4 +381,82 @@ public class Main {
         }
         System.out.println(message);
     }
+
+    public static void fizzBuzz(){
+        System.out.println("Saississez un nombre :");
+        int n = demandeInt();
+        int fizz = 3;
+        int buzz = 5;
+        for(int i = 1; i<=n; i++){
+            if((i%fizz == 0) && (i%buzz == 0)){
+                System.out.println("fizzbuzz");
+            } else if (i%fizz ==0) {
+                System.out.println("fizz");
+            } else if (i%buzz == 0) {
+                System.out.println("buzz");
+            } else {
+                System.out.println(i);
+            }
+        }
+    }
+
+    public static void plusOuMoins() {
+        int nombreInconnu = randInt(1, 100);
+        int nombreEssaisMax = 10;
+        int nombreEssais = 0;
+        boolean continuer = true;
+
+        while (continuer) {
+            System.out.println("Donnez un nombre compris entre 1 et 100");
+            String nombreJoueurString = demande();
+            if (verifSiContientEntier(nombreJoueurString)) {
+                int nombreJoueur = Integer.parseInt(nombreJoueurString);
+                if (nombreJoueur > 0 && nombreJoueur < 101) {
+                    nombreEssais++;
+                    if (nombreJoueur == nombreInconnu) {
+                        System.out.println("Bravo ! Vous avez trouvé le nombre en " + nombreEssais + " essai(s)");
+                        continuer = false;
+                    } else if (nombreJoueur > nombreInconnu) {
+                        System.out.println("Votre nombre est trop grand, encore " + (nombreEssaisMax - nombreEssais) + " essai(s)");
+                    } else {
+                        System.out.println("Votre nombre est trop petit, encore " + (nombreEssaisMax - nombreEssais) + " essai(s)");
+                    }
+                } else {
+                    System.out.println("Erreur! Vous devez entrer un nombre entre 1 et 100");
+                }
+            } else {
+                System.out.println("Erreur! Vous devez entrer un nombre entre 1 et 100");
+            }
+
+            if (nombreEssais >= nombreEssaisMax) {
+                System.out.println("Vous avez dépassé le nombre de " + nombreEssaisMax + " essais, Dommage ! Vous avez perdu !!!");
+                continuer = false;
+            }
+        }
+    }
+
+    /*
+    Rooler coaster
+    Vous êtes ingénieur et on vous demande de calculer les profits que peut réaliser
+    un Roller Coaster en une journée
+
+    Un groupe de visiteur ne veut pas être séparé pour un tour de Roller Coaster.
+    ▪ Dès qu'il n'y a plus assez de places dans le manège pour le prochain groupe, il démarre.
+    ▪ Quand un groupe de visiteur a déjà fait un tour de manège, il se remet dans la file d'attente.
+    ▪ Chaque visiteur qui effectue un tour de manège dépense 1€
+
+    ▪ Le manège dispose d'un certain nombre de places assises. ("places")
+    ▪ Le manège ne peut effectuer qu'un certain nombre de tours pendant une journée ("tours")
+    ▪ La file d'attente est une liste de groupes de visiteurs. ("file")
+    Avec les informations du contexte et les données (places, tours, file), écrivez un programme
+    permettant de calculer les profits du Roller Coaster sur une journée.
+
+    (places = 5, tours = 3, file = [2, 3, 5, 4])
+     */
+
+
+    public static void rollerCoster(){
+
+    }
+
 }
