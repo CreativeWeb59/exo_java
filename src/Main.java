@@ -335,8 +335,6 @@ public class Main {
         for (int i = 0; i < temperatures.size(); i++) {
             if(temperatures.get(i) < basseTemp){
                 basseTemp = temperatures.get(i);
-            } else {
-
             }
         }
         System.out.println("La temperateure la plus proche de 0°C est " + basseTemp + "°C.");
