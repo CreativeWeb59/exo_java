@@ -225,7 +225,6 @@ public class Main {
         System.out.println("Saisissez un nombre :");
         int nombre = demandeInt();
         String message = "";
-        String etoile = "";
 
         String tabMessage[] = new String[nombre]; // tableau pour stocker les étoiles
         for (int i = 1; i <= nombre; i++) {
@@ -253,9 +252,37 @@ public class Main {
     /* exo 11 La monnaie europeenne
     Écrivez un programme qui demande à l'utilisateur de saisir un nombre décimal.
     Le programme doit renvoyer exactement le nombre de billets et de pièces qu'il faut pour obtenir ce nombre
+    (ex : nombre = 2437,57€)
+    Billet 500€ : 4
+    Billet 200€ : 2
+    Billet 20€ : 1
+    Billet 10€ : 1
+    Billet 5€ : 1
+    Pièce 2€ : 1
+    Pièce 0,50€ : 1
+    Pièce 0,02€ : 1
      */
 
     public static void exo11(){
+        System.out.println("Saisissez un montant :");
+        double montant = demandeDouble();
+        double reste = montant;
+        // tableau contenant les pieces et billets
+        double monnaies[] = new double[] {500, 200, 20, 10, 5, 2, 0.50, 0.02, 0.01};
+        int nbMonnaies[] = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+
+        for (int i = 0; i < monnaies.length; i++) {
+            if (reste / monnaies[i] > 0) {
+                nbMonnaies[i] = (int) (reste/monnaies[i]);
+                reste = reste - (monnaies[i] * nbMonnaies[i]);
+                if (i<5){
+                    System.out.println("Billets " + monnaies[i] + "€ : " + nbMonnaies[i]);
+                } else {
+                    System.out.println("Pièces " + monnaies[i] + "€ : " + nbMonnaies[i]);
+                }
+            }
+        }
 
     }
 
