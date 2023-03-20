@@ -15,7 +15,8 @@ public class Main {
         // exo9();
         // exo10();
         // exo11();
-        exo12();
+        // exo12();
+        exo13();
     }
 
     /* demande a l'utilisateur et renvoi un string */
@@ -302,11 +303,10 @@ public class Main {
         temperatures.add(7.0);
         temperatures.add(6.0);
         temperatures.add(-5.0);
-        double proche = 0;
         double basseTemp = 500000;
 
         for (int i = 0; i < temperatures.size(); i++) {
-            if(temperatures.get(i) < 5000){
+            if(temperatures.get(i) < basseTemp){
                 basseTemp = temperatures.get(i);
             } else {
 
@@ -315,4 +315,43 @@ public class Main {
         System.out.println("La temperateure la plus proche de 0°C est " + basseTemp + "°C.");
     }
 
+    /* Centrale de tri
+    Vous disposez d'une liste de nombre.
+    Triez la liste du plus petit au plus grand
+    [12, 25, 5, 7, 6, -5]
+     */
+
+    public static void exo13(){
+        List<Double> result = new ArrayList<>();
+        List<Double> triTemp = new ArrayList<>();
+        triTemp.add(12.0);
+        triTemp.add(25.0);
+        triTemp.add(5.0);
+        triTemp.add(7.0);
+        triTemp.add(6.0);
+        triTemp.add(-5.0);
+
+        while (!triTemp.isEmpty()){
+            int minIndex = 0;
+            double min = triTemp.get(0);
+            for (int i = 0; i < triTemp.size(); i++) {
+                if (triTemp.get(i) < min) {
+                    minIndex = i;
+                    min = triTemp.get(i);
+                }
+            }
+            triTemp.remove(minIndex);
+            result.add(min);
+        }
+
+        String message = "[";
+        for (int i = 0; i < result.size(); i++) {
+            if (i == result.size()-1){
+                message += result.get(i) + "]";
+            } else {
+                message += result.get(i) + ", ";
+            }
+        }
+        System.out.println(message);
+    }
 }
